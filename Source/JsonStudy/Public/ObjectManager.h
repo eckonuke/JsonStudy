@@ -6,6 +6,17 @@
 #include "GameFramework/Actor.h"
 #include "ObjectManager.generated.h"
 
+USTRUCT()
+struct FObjectInfo {
+	GENERATED_BODY()
+public:
+	UPROPERTY(EditAnywhere)
+	int32 type;
+
+	UPROPERTY(EditAnywhere)
+	class ADefaultObject* obj;
+};
+
 UCLASS()
 class JSONSTUDY_API AObjectManager : public AActor
 {
@@ -23,11 +34,19 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	void SaveObject();
+	void LoadObject();
+	void DeleteAll();
 	void CreateObject();
+	void CreateObject(int32 typeNum, FVector position);
+
 
 	UPROPERTY(EditAnywhere)
 	TSubclassOf<class ADefaultObject> objectFactory;
 
 	UPROPERTY(EditAnywhere)
 	TArray<class UStaticMesh*> meshes;
+
+	UPROPERTY(EditAnywhere)
+	TArray<FObjectInfo>  arrayObject;
 };

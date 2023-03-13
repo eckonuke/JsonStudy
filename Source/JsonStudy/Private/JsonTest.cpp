@@ -81,7 +81,7 @@ void AJsonTest::LoadData() {
 		bool isWoman = jsonObject->GetBoolField("isWoman");
 		
 		TArray<FString> userInterest;
-		TArray<TSharedPtr<FJsonValue>> arrayInterests = jsonObject->GetArrayField("userInterests");
+		TArray<TSharedPtr<FJsonValue>> arrayInterests = jsonObject->GetArrayField("userInterest");
 		for (int32 i = 0; i < arrayInterests.Num(); i++) {
 			userInterest.Add(arrayInterests[i]->AsString());
 		}
